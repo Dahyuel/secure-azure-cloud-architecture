@@ -1,0 +1,17 @@
+subscription_id        = "00000000-0000-0000-0000-000000000000"
+location               = "eastus"
+environment            = "production"
+admin_source_cidrs     = [] # Replace with your trusted public IPv4 /32 to enable SSH.
+admin_port             = 22
+database_port          = 5432
+allocate_web_public_ip = false
+reader_principal_ids   = [] # Existing Entra object IDs, not client IDs.
+enable_workloads       = false # Set true to deploy the complete, billable Azure stack.
+deployment_suffix      = "portfolio01" # Replace with a globally unique suffix.
+postgres_admin_object_id = null # Your existing Entra object ID, required for workloads.
+postgres_admin_name      = null # Your UPN or Entra group name, required for workloads.
+postgres_admin_type      = "User"
+scm_source_cidrs         = [] # Temporarily permit your public /32 for deploy and bootstrap.
+tags = {
+  Owner = "portfolio-maintainer"
+}

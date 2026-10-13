@@ -1,0 +1,10 @@
+.terraform/
+node_modules/
+dist/
+artifacts/
+*.tf
+*.hcl
+*.tfvars*
+.env*
+package-lock.json
+docs/assets/*.png

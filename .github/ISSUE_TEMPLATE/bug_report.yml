@@ -1,0 +1,32 @@
+name: Bug report
+description: Report a reproducible application, infrastructure or documentation defect.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: 'For vulnerabilities, use private vulnerability reporting. Do not include tokens, passwords, state, private tfvars or confidential deployment data.'
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+      description: Explain the defect and its impact.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Use an authorized environment and sanitized inputs.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and sanitized evidence
+      description: Include OS, Node/Terraform versions, deployment profile and relevant redacted output.

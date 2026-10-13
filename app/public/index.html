@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="An interactive Azure cloud security engineering lab: explore network segmentation, model firewall decisions and prepare secure infrastructure."
+    />
+    <title>Azure Sentinel Lab · Security Workbench</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to workspace</a>
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#overview"
+        ><img src="/favicon.svg" alt="" width="38" height="38" /><span
+          >SENTINEL<span class="brand-sub">AZURE SECURITY LAB</span></span
+        ></a
+      >
+      <div class="workspace-label">ENGINEERING WORKSPACE</div>
+      <nav id="navigation">
+        <a href="#overview" data-view="overview"><span class="nav-icon">◫</span>Overview</a>
+        <a href="#architecture" data-view="architecture"
+          ><span class="nav-icon">⌘</span>Architecture</a
+        >
+        <a href="#policies" data-view="policies"
+          ><span class="nav-icon">▤</span>Security policies<span class="nav-count" id="rule-count"
+            >7</span
+          ></a
+        >
+        <a href="#simulator" data-view="simulator"
+          ><span class="nav-icon">⇄</span>Traffic simulator</a
+        >
+        <a href="#configure" data-view="configure"
+          ><span class="nav-icon">⚙</span>Deployment studio</a
+        >
+        <a href="#evidence" data-view="evidence"
+          ><span class="nav-icon">✓</span>Evidence & health</a
+        >
+        <a href="#guide" data-view="guide"><span class="nav-icon">▧</span>Field guide</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="lab-badge"><span class="pulse-dot"></span>Open-source engineering lab</div>
+        <p>Built to make security decisions<br />visible, testable, and reproducible.</p>
+        <div class="version">MIT LICENSE <span>v1.0.0</span></div>
+      </div>
+    </aside>
+    <div class="shell">
+      <header class="topbar">
+        <div class="breadcrumb">
+          Workspace <span>/</span> <strong id="breadcrumb">Overview</strong>
+        </div>
+        <div class="top-actions">
+          <span class="mode-badge" id="mode-badge">LOCAL DEMO</span
+          ><span class="environment" id="env-badge">production</span
+          ><button class="avatar" aria-label="Read project field guide" id="guide-button">
+            SL
+          </button>
+        </div>
+      </header>
+      <main id="main" tabindex="-1"><div id="view"></div></main>
+      <footer>
+        <span
+          >Azure Sentinel Lab <span class="footer-dot">·</span> Infrastructure you can
+          explain.</span
+        ><span>Terraform / Azure / Least privilege</span>
+      </footer>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <dialog id="node-dialog">
+      <button class="dialog-close" aria-label="Close resource details">×</button>
+      <div id="node-detail"></div>
+    </dialog>
+    <noscript
+      ><p class="noscript">
+        Enable JavaScript to use this interactive workbench. Deployment documentation is also
+        available in the repository README.
+      </p></noscript
+    >
+  </body>
+</html>

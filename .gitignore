@@ -1,0 +1,22 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+.terraformrc
+terraform.rc
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+artifacts/
+coverage/
+*.log
+.DS_Store
+.vscode/
+# Local screenshots are explicitly selected before committing to docs.
+# Commit .terraform.lock.hcl to pin reviewed provider versions and checksums.

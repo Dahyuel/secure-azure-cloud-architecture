@@ -1,0 +1,50 @@
+name: azure-sentinel-lab
+services:
+  app:
+    build: .
+    ports:
+      - '127.0.0.1:${LOCAL_HTTP_PORT:-3000}:3000'
+    environment:
+      APP_MODE: local
+      DB_AUTH: local_password
+      PGHOST: database
+      PGUSER: sentinel_app
+      PGDATABASE: sentinellab
+      PGPASSWORD: ${POSTGRES_APP_PASSWORD:?Run npm run setup:local first}
+    networks: [frontend, private]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 100
+    mem_limit: 256m
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+  database:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_DB: sentinellab
+      POSTGRES_USER: local_operator
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Run npm run setup:local first}
+      POSTGRES_APP_PASSWORD: ${POSTGRES_APP_PASSWORD:?Run npm run setup:local first}
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    networks: [private]
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/local-init.sh:/docker-entrypoint-initdb.d/10-app-role.sh:ro
+    security_opt: [no-new-privileges:true]
+    pids_limit: 150
+    mem_limit: 512m
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U local_operator -d sentinellab']
+      interval: 5s
+      timeout: 5s
+      retries: 12
+networks:
+  frontend: {}
+  private:
+    internal: true
+volumes:
+  postgres_data: {}

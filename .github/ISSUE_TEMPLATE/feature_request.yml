@@ -1,0 +1,21 @@
+name: Feature proposal
+description: Propose a focused improvement with a security rationale.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Security implications and verification
+      description: Explain new permissions, data flows, trust boundaries and proposed tests.

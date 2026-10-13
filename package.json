@@ -1,0 +1,29 @@
+{
+  "name": "azure-sentinel-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure Azure IaC with an interactive security engineering workbench",
+  "type": "module",
+  "engines": {
+    "node": ">=22 <27"
+  },
+  "scripts": {
+    "start": "node app/server.mjs",
+    "dev": "node --watch app/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "format": "prettier --write app scripts tests docs .github package.json compose.yaml README.md SECURITY.md CONTRIBUTING.md CHANGELOG.md .prettierrc.json",
+    "format:check": "prettier --check app scripts tests docs .github package.json compose.yaml README.md SECURITY.md CONTRIBUTING.md CHANGELOG.md .prettierrc.json",
+    "setup:local": "node scripts/setup-local.mjs",
+    "package:azure": "node scripts/package-azure.mjs",
+    "package:source": "node scripts/package-source.mjs",
+    "db:bootstrap": "node scripts/bootstrap-database.mjs"
+  },
+  "dependencies": {
+    "pg": "8.16.3"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}
